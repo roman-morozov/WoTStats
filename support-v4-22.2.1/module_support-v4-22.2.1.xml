@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_support-v4-22.2.1" default="compile.module.support-v4-22.2.1">
+  <dirname property="module.support-v4-22.2.1.basedir" file="${ant.file.module_support-v4-22.2.1}"/>
+  
+  <property name="module.jdk.home.support-v4-22.2.1" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.support-v4-22.2.1" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.support-v4-22.2.1" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.support-v4-22.2.1" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="support-v4-22.2.1.output.dir" value="${module.support-v4-22.2.1.basedir}/../out/production/support-v4-22.2.1"/>
+  <property name="support-v4-22.2.1.testoutput.dir" value="${module.support-v4-22.2.1.basedir}/../out/test/support-v4-22.2.1"/>
+  
+  <path id="support-v4-22.2.1.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="support-v4-22.2.1.module.production.classpath">
+    <path refid="${module.jdk.classpath.support-v4-22.2.1}"/>
+    <pathelement location="${basedir}/support-v4-22.2.1/classes.jar"/>
+  </path>
+  
+  <path id="support-v4-22.2.1.runtime.production.module.classpath">
+    <pathelement location="${support-v4-22.2.1.output.dir}"/>
+    <pathelement location="${basedir}/support-v4-22.2.1/classes.jar"/>
+  </path>
+  
+  <path id="support-v4-22.2.1.module.classpath">
+    <path refid="${module.jdk.classpath.support-v4-22.2.1}"/>
+    <pathelement location="${support-v4-22.2.1.output.dir}"/>
+    <pathelement location="${basedir}/support-v4-22.2.1/classes.jar"/>
+  </path>
+  
+  <path id="support-v4-22.2.1.runtime.module.classpath">
+    <pathelement location="${support-v4-22.2.1.testoutput.dir}"/>
+    <pathelement location="${support-v4-22.2.1.output.dir}"/>
+    <pathelement location="${basedir}/support-v4-22.2.1/classes.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.support-v4-22.2.1">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.support-v4-22.2.1">
+    <patternset refid="excluded.from.module.support-v4-22.2.1"/>
+  </patternset>
+  
+  <path id="support-v4-22.2.1.module.sourcepath">
+    <dirset dir="${module.support-v4-22.2.1.basedir}">
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.support-v4-22.2.1" depends="compile.module.support-v4-22.2.1.production,compile.module.support-v4-22.2.1.tests" description="Compile module support-v4-22.2.1"/>
+  
+  <target name="compile.module.support-v4-22.2.1.production" description="Compile module support-v4-22.2.1; production classes">
+    <mkdir dir="${support-v4-22.2.1.output.dir}"/>
+    <javac destdir="${support-v4-22.2.1.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.support-v4-22.2.1}/javac">
+      <compilerarg line="${compiler.args.support-v4-22.2.1}"/>
+      <bootclasspath refid="support-v4-22.2.1.module.bootclasspath"/>
+      <classpath refid="support-v4-22.2.1.module.production.classpath"/>
+      <src refid="support-v4-22.2.1.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.support-v4-22.2.1"/>
+    </javac>
+    
+    <copy todir="${support-v4-22.2.1.output.dir}">
+      <fileset dir="${module.support-v4-22.2.1.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.support-v4-22.2.1.tests" depends="compile.module.support-v4-22.2.1.production" description="compile module support-v4-22.2.1; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.support-v4-22.2.1" description="cleanup module">
+    <delete dir="${support-v4-22.2.1.output.dir}"/>
+    <delete dir="${support-v4-22.2.1.testoutput.dir}"/>
+  </target>
+</project>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#ff343434" android:gravity="right" android:id="@id/textView32" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/tanks_avg_param1" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#ff343434" android:gravity="right" android:id="@id/textView31" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/tanks_avg_param2" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="#ff343434" android:gravity="right" android:id="@id/textView30" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/tanks_avg_param3" />
+    </LinearLayout>
+    <ListView android:id="@id/listViewAvgMain" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawSelectorOnTop="false" />
+</LinearLayout>

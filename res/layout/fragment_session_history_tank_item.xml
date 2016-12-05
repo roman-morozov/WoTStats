@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/viewSessionDetalTanksMain" android:background="@color/main_white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_weight="0.18">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff947c41" android:id="@id/textLevelS" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:minWidth="30.0dip" android:text="VIII" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/main_ab" android:id="@id/textViewTankName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="Leopard 1" android:maxLength="15" android:layout_toRightOf="@id/linearLayout2" android:layout_above="@id/viewTanksDetal" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_toRightOf="@id/textLevelS" android:layout_above="@id/viewTanksDetal" android:layout_alignTop="@id/textLevelS">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/imageViewClassS" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="1.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/imageViewNationS" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="1.0dip" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/imageViewMarkS" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_margin="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/viewTanksDetal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/textLevelS" android:layout_alignParentLeft="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/main_ab" android:id="@id/textViewTankDetalName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:text="20" android:layout_alignTop="@id/textViewTankName" android:layout_alignParentRight="true" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/textViewDetalTankID" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="wrap_content" android:text="Small Text" android:layout_toRightOf="@id/textViewTankName" android:layout_above="@id/viewTanksDetal" />
+    </RelativeLayout>
+    <FrameLayout android:background="#ffe3e3e3" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+</LinearLayout>

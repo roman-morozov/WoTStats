@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="support-v4-22.2.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/support-v4-22.2.1/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/support-v4-22.2.1/classes1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/support-v4-22.2.1/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

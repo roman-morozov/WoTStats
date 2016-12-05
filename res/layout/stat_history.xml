@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:id="@id/horizontalScrollView4" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="775.0dip" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffe1e1e1" android:layout_width="wrap_content" android:layout_height="40.0dip">
+                <TextView android:enabled="false" android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView10" android:background="#ff343434" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="N" android:autoText="false" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView11" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history1" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView12" android:background="#ff343434" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history2" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView13" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history3" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView14" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history4" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView15" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history5" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView16" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history6" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView17" android:background="#ff343434" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history7" />
+                <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ffebebeb" android:gravity="center_horizontal" android:id="@id/textView18" android:background="#ff343434" android:layout_width="140.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/it_history8" />
+            </LinearLayout>
+            <ListView android:id="@id/listViewStatHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:stackFromBottom="false" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

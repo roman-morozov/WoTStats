@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="@color/main_gray" android:id="@id/textViewDetalStatName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:text="Damage" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/main_gray" android:id="@id/textViewDetalStatValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip" android:text="1320,24" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="@color/main_gray" android:gravity="right" android:id="@id/textViewDetalStatAvg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:minWidth="65.0dip" android:text="1320,24" android:layout_alignTop="@id/textViewDetalStatDelta" android:layout_alignRight="@id/textViewDetalStatValue" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="@color/main_gray" android:id="@id/textViewDetalStatDelta" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="+20,24" android:layout_toLeftOf="@id/textViewDetalStatAvg" android:layout_below="@id/textViewDetalStatValue" />
+    </RelativeLayout>
+    <FrameLayout android:layout_gravity="center_horizontal" android:background="#ffdfdfdf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" />
+</LinearLayout>

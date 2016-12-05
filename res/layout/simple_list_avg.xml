@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="5.0dip">
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff343434" android:id="@id/textViewValueName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="Medium Text" android:layout_alignParentLeft="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff797979" android:gravity="right" android:id="@id/textViewDelta" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="-5000" android:layout_alignParentRight="true" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff797979" android:gravity="right" android:id="@id/textViewAvgValue" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="5000" android:layout_toLeftOf="@id/textViewDelta" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff797979" android:gravity="right" android:id="@id/textViewAvg" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="5000" android:layout_toLeftOf="@id/textViewAvgValue" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</LinearLayout>

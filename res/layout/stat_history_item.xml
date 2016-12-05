@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="#ffe1e1e1" android:layout_width="wrap_content" android:layout_height="60.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="40.0dip" android:layout_height="wrap_content">
+            <TextView android:enabled="false" android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="center_horizontal" android:id="@id/it_nomer" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="N" android:autoText="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_battles1" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Боёв" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff696969" android:gravity="right" android:id="@id/it_battles2" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Боёв" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="60.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wins1" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="ПП%" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wins2" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="ПП%" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wn81" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="WN8" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wn82" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="WN8" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wn61" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="WN6" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_wn62" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="WN6" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_er1" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="ER" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_er2" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="ER" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_dmg1" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Урон" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_dmg2" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Урон" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="80.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_exp1" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Опыт" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_exp2" android:layout_width="70.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Опыт" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="150.0dip" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff373737" android:gravity="right" android:id="@id/it_lastnattle1" android:layout_width="140.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="Последний бой" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

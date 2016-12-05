@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classs">
+        <item>СТ</item>
+        <item>ТТ</item>
+        <item>ЛТ</item>
+        <item>ПТ</item>
+        <item>АРТ-САУ</item>
+    </string-array>
+    <string-array name="level">
+        <item>10</item>
+        <item>9</item>
+        <item>8</item>
+        <item>7</item>
+        <item>6</item>
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="nations">
+        <item>СССР</item>
+        <item>Германия</item>
+        <item>США</item>
+        <item>Франция</item>
+        <item>Британия</item>
+        <item>Китай</item>
+        <item>Япония</item>
+    </string-array>
+    <string-array name="sesion_count">
+        <item>Все</item>
+        <item>10</item>
+        <item>20</item>
+        <item>40</item>
+        <item>60</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="sortlist">
+        <item>Количество боёв</item>
+        <item>Уровень техники</item>
+        <item>Процент побед</item>
+        <item>Средний урон</item>
+        <item>Средний опыт</item>
+        <item>WN6</item>
+        <item>РЭ</item>
+        <item>WN8</item>
+    </string-array>
+</resources>

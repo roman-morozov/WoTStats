@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="classType">
+        <item>Medium</item>
+        <item>Heavy</item>
+        <item>Light</item>
+        <item>TD</item>
+        <item>SPGs</item>
+    </string-array>
+    <string-array name="level">
+        <item>10</item>
+        <item>9</item>
+        <item>8</item>
+        <item>7</item>
+        <item>6</item>
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="nations">
+        <item>USSR</item>
+        <item>Germany</item>
+        <item>USA</item>
+        <item>France</item>
+        <item>UK</item>
+        <item>China</item>
+        <item>Japan</item>
+    </string-array>
+    <string-array name="session_count">
+        <item>All</item>
+        <item>10</item>
+        <item>20</item>
+        <item>40</item>
+        <item>60</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="sortlist">
+        <item>Battles</item>
+        <item>Vehicle level</item>
+        <item>Win rate</item>
+        <item>Average damage</item>
+        <item>Average experience</item>
+        <item>WN6</item>
+        <item>ER</item>
+        <item>WN8</item>
+    </string-array>
+    <string-array name="battle_count">
+        <item>1</item>
+        <item>10</item>
+        <item>20</item>
+        <item>50</item>
+        <item>100</item>
+    </string-array>
+    <string-array name="servers">
+        <item>RU</item>
+        <item>EU</item>
+        <item>US</item>
+        <item>SEA</item>
+        <item>RK</item>
+    </string-array>
+</resources>

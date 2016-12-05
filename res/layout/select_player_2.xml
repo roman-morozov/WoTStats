@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+              tools:context=".SelectPlayer">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <EditText android:id="@id/editPlayerName" android:layout_width="40.0dip" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:layout_marginTop="5.0dip"
+                  android:maxLines="1" android:lines="1" android:singleLine="true" android:layout_toLeftOf="@id/spinnerServers" android:layout_alignParentLeft="true" android:hint="@string/abc_search_hint"/>
+        <Spinner android:entries="@array/servers" android:layout_gravity="center_vertical" android:id="@id/spinnerServers" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_weight="0.12" android:layout_alignTop="@id/editPlayerName" android:layout_alignBottom="@id/editPlayerName" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
+        <Button android:textColor="#ffffffff" android:id="@id/buttonSearchPlayer" android:background="#ff33b5e5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/ttl_bnt_search" android:onClick="buttonSearchPlayerClick" />
+        <ListView android:id="@id/listPlayerView" android:layout_width="fill_parent" android:layout_height="0dp" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

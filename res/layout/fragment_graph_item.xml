@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <CheckBox android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff343434" android:id="@id/checkBoxShow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/caption_stat_gr" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff343434" android:layout_gravity="center_vertical" android:id="@id/textView28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/caption_stat_gr_1" />
+            <Spinner android:entries="@array/session_count" android:id="@id/spinnerSessionCount" android:layout_width="wrap_content" android:layout_height="28.0dip" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/tab1" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.github.mikephil.charting.charts.LineChart android:id="@id/chart1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>
