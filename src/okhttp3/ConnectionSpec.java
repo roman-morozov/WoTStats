@@ -185,12 +185,9 @@ public final class ConnectionSpec {
       return false;
     }
 
-    if (cipherSuites != null
-        && !nonEmptyIntersection(cipherSuites, socket.getEnabledCipherSuites())) {
-      return false;
-    }
+    return !(cipherSuites != null
+            && !nonEmptyIntersection(cipherSuites, socket.getEnabledCipherSuites()));
 
-    return true;
   }
 
   /**

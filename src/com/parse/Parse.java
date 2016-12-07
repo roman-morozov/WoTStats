@@ -737,7 +737,7 @@ public class Parse {
   }
 
   /* package */ interface ParseCallbacks {
-    public void onParseInitialized();
+    void onParseInitialized();
   }
 
   //endregion

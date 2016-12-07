@@ -1672,8 +1672,7 @@ public final class HttpUrl {
         address[b++] = (byte) value;
       }
 
-      if (b != addressOffset + 4) return false; // Too few groups. We wanted exactly four.
-      return true; // Success.
+      return b == addressOffset + 4;
     }
 
     private static String inet6AddressToAscii(byte[] address) {

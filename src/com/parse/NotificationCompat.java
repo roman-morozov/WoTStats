@@ -50,13 +50,13 @@ import android.widget.RemoteViews;
   private static final NotificationCompatImpl IMPL;
 
   interface NotificationCompatImpl {
-    public Notification build(Builder b);
+    Notification build(Builder b);
   }
 
   static class NotificationCompatImplBase implements  NotificationCompatImpl {
     @Override
     public Notification build(Builder b) {
-      Notification result = (Notification) b.mNotification;
+      Notification result = b.mNotification;
       result.setLatestEventInfo(b.mContext, b.mContentTitle, b.mContentText, b.mContentIntent);
       // translate high priority requests into legacy flag
       if (b.mPriority > PRIORITY_DEFAULT) {
@@ -311,7 +311,7 @@ import android.widget.RemoteViews;
      */
     @Deprecated
     public Notification getNotification() {
-      return (Notification) IMPL.build(this);
+      return IMPL.build(this);
     }
 
     /**
@@ -319,7 +319,7 @@ import android.widget.RemoteViews;
      * object.
      */
     public Notification build() {
-      return (Notification) IMPL.build(this);
+      return IMPL.build(this);
     }
 
     protected static CharSequence limitCharSequenceLength(CharSequence cs) {

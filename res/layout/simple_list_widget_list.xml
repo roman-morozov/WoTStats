@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip" android:weightSum="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/imageView" android:padding="6.0dip" android:focusable="true" android:clickable="true" android:layout_width="40.0dip" android:layout_height="fill_parent" android:src="@drawable/slem" android:cropToPadding="true" />
-    <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff484848" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/textSelPlayerName" android:focusable="false" android:clickable="false" android:layout_width="211.0dip" android:layout_height="fill_parent" android:text="Large Text" android:maxLines="1" android:lines="1" android:layout_weight="0.64" android:layout_toLeftOf="@id/textPlayerServer" android:layout_toRightOf="@id/imageView" android:layout_alignParentTop="true" />
-    <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="#ff6e6e6e" android:layout_gravity="center_vertical" android:id="@id/textPlayerServer" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="TEMP" android:maxLines="1" android:lines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>

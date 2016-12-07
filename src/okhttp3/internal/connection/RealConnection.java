@@ -374,10 +374,7 @@ public final class RealConnection extends Http2Connection.Listener implements Co
         int readTimeout = socket.getSoTimeout();
         try {
           socket.setSoTimeout(1);
-          if (source.exhausted()) {
-            return false; // Stream is exhausted; socket is closed.
-          }
-          return true;
+          return !source.exhausted();
         } finally {
           socket.setSoTimeout(readTimeout);
         }

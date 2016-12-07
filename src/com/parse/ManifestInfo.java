@@ -453,13 +453,10 @@ import java.util.List;
 
   private static boolean hasAnyGcmSpecificDeclaration() {
     Context context = getContext();
-    if (hasRequestedPermissions(context, "com.google.android.c2dm.permission.RECEIVE") ||
-        hasRequestedPermissions(context, context.getPackageName() + ".permission.C2D_MESSAGE") ||
-        getReceiverInfo(GcmBroadcastReceiver.class) != null) {
-      return true;
-    }
+    return hasRequestedPermissions(context, "com.google.android.c2dm.permission.RECEIVE") ||
+            hasRequestedPermissions(context, context.getPackageName() + ".permission.C2D_MESSAGE") ||
+            getReceiverInfo(GcmBroadcastReceiver.class) != null;
 
-    return false;
   }
 
   private static boolean isGooglePlayServicesAvailable() {

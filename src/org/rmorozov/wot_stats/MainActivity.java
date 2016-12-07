@@ -129,7 +129,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CHOOSE_PLAYER && resultCode == Activity.RESULT_OK) {
-            String[] param_array = data.getStringExtra(SelectPlayer.THIEF).split("\\$");
+            String[] param_array = data.getStringExtra(SelectPlayer.Player).split("\\$");
             mainPlayer = param_array[0];
             String mainPlayerId = param_array[1];
             String mainPlayerServer = param_array[2];

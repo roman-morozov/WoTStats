@@ -104,12 +104,9 @@ public final class Http2Stream {
     if (errorCode != null) {
       return false;
     }
-    if ((source.finished || source.closed)
-        && (sink.finished || sink.closed)
-        && responseHeaders != null) {
-      return false;
-    }
-    return true;
+    return !((source.finished || source.closed)
+            && (sink.finished || sink.closed)
+            && responseHeaders != null);
   }
 
   /** Returns true if this stream was created by this peer. */

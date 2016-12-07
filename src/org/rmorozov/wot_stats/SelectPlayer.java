@@ -30,7 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SelectPlayer extends Activity {
-    public static final String THIEF = "org.morozov.wot_stats";
+    public static final String Player = "org.morozov.wot_stats";
     private static final String URL_LIST_PLAYER = "/wot/account/list/?search=";
     private static final String URL_SITE = "http://api.worldoftanks.";
     private static final String account_id = "account_id";
@@ -141,7 +141,7 @@ public class SelectPlayer extends Activity {
                 public void onClick(View v) {
                     int position = mListView.getPositionForView((View) v.getParent());
                     Intent answerIntent = new Intent();
-                    answerIntent.putExtra(SelectPlayer.THIEF, playerArray[position] + "$" + playerIDArray[position] + "$" + playerServerArray[position]);
+                    answerIntent.putExtra(SelectPlayer.Player, playerArray[position] + "$" + playerIDArray[position] + "$" + playerServerArray[position]);
                     setResult(Activity.RESULT_OK, answerIntent);
                     finish();
                 }
@@ -256,7 +256,7 @@ public class SelectPlayer extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view;
                 Intent answerIntent = new Intent();
-                answerIntent.putExtra(SelectPlayer.THIEF, textView.getText().toString() + "$" + playerIDArray[position] + "$" + playerServerArray[position]);
+                answerIntent.putExtra(SelectPlayer.Player, textView.getText().toString() + "$" + playerIDArray[position] + "$" + playerServerArray[position]);
                 setResult(Activity.RESULT_OK, answerIntent);
                 finish();
             }

@@ -174,9 +174,8 @@ public final class Cookie {
 
     if (!pathMatch(url, path)) return false;
 
-    if (secure && !url.isHttps()) return false;
+    return !(secure && !url.isHttps());
 
-    return true;
   }
 
   private static boolean domainMatch(HttpUrl url, String domain) {
@@ -186,13 +185,10 @@ public final class Cookie {
       return true; // As in 'example.com' matching 'example.com'.
     }
 
-    if (urlHost.endsWith(domain)
-        && urlHost.charAt(urlHost.length() - domain.length() - 1) == '.'
-        && !verifyAsIpAddress(urlHost)) {
-      return true; // As in 'example.com' matching 'www.example.com'.
-    }
+    return urlHost.endsWith(domain)
+            && urlHost.charAt(urlHost.length() - domain.length() - 1) == '.'
+            && !verifyAsIpAddress(urlHost);
 
-    return false;
   }
 
   private static boolean pathMatch(HttpUrl url, String path) {

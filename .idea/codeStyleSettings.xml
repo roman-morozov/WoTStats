@@ -5,6 +5,9 @@
       <value>
         <option name="FIELD_NAME_PREFIX" value="m" />
         <option name="STATIC_FIELD_NAME_PREFIX" value="s" />
+        <AndroidXmlCodeStyleSettings>
+          <option name="USE_CUSTOM_SETTINGS" value="true" />
+        </AndroidXmlCodeStyleSettings>
         <XML>
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
         </XML>

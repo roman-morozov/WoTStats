@@ -198,12 +198,9 @@ public final class HttpHeaders {
 
     // If the Content-Length or Transfer-Encoding headers disagree with the response code, the
     // response is malformed. For best compatibility, we honor the headers.
-    if (contentLength(response) != -1
-        || "chunked".equalsIgnoreCase(response.header("Transfer-Encoding"))) {
-      return true;
-    }
+    return contentLength(response) != -1
+            || "chunked".equalsIgnoreCase(response.header("Transfer-Encoding"));
 
-    return false;
   }
 
   /**

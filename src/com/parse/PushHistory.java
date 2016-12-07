@@ -69,7 +69,7 @@ import org.json.JSONObject;
       if (jsonHistory != null) {
         Iterator<String> it = jsonHistory.keys();
         while (it.hasNext()) {
-          String pushId = (String)it.next();
+          String pushId = it.next();
           String timestamp = jsonHistory.optString(pushId, null);
           
           if (pushId != null && timestamp != null) {
