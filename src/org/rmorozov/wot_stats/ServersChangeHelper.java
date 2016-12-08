@@ -36,7 +36,7 @@ public class ServersChangeHelper {
             AppId = "0d794f09cab314a90ddb7ee2cde5802c";
         }
         if (ServerName.equals("RK")) {
-            return "0d794f09cab314a90ddb7ee2cde5802c";
+            AppId = "0d794f09cab314a90ddb7ee2cde5802c";
         }
         return AppId;
     }
