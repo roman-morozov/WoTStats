@@ -52,7 +52,7 @@ public class JSONParser {
         }
     }
 
-    public JSONArray getJSONFromUrl(String requestUrl) {
+    public JSONArray getJSONArrayFromUrl(String requestUrl) {
         try {
             jarrayObj = new JSONObject(getJSON(requestUrl));
             jarray = jarrayObj.getJSONArray("data");

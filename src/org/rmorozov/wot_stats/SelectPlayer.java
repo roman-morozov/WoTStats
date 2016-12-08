@@ -156,7 +156,7 @@ public class SelectPlayer extends Activity {
             String name = args[0];
             String selectServer = args[1];
             ServersChangeHelper sch = new ServersChangeHelper();
-            JSONArray json = new JSONParser().getJSONFromUrl(SelectPlayer.URL_SITE + sch.GetZoneByServerName(selectServer) + SelectPlayer.URL_LIST_PLAYER + name.replaceAll(" ", "") + "&application_id=" + sch.GetAppIdByServerName(selectServer));
+            JSONArray json = new JSONParser().getJSONArrayFromUrl(SelectPlayer.URL_SITE + sch.GetZoneByServerName(selectServer) + SelectPlayer.URL_LIST_PLAYER + name.replaceAll(" ", "") + "&application_id=" + sch.GetAppIdByServerName(selectServer));
             if (json != null) {
                 listPlayer = new ArrayList<>();
                 playerArray = new String[json.length()];
