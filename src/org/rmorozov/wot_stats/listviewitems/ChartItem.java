@@ -5,7 +5,7 @@ import android.view.View;
 import com.github.mikephil.charting.data.ChartData;
 
 public abstract class ChartItem {
-    protected ChartData<?> mChartData;
+    protected final ChartData<?> mChartData;
 
     public abstract int getItemType();
 

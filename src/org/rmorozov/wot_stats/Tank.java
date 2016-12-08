@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+@SuppressWarnings("unused")
 public class Tank {
     public String battle_avg_xp;
     public String battles;
@@ -28,6 +29,5 @@ public class Tank {
     public String tank_id;
     public String type;
     public String wins;
-    public String wn8;
     public String xp;
 }

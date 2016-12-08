@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
@@ -24,25 +25,23 @@ public class TanksDetalAvg extends Fragment {
     SQLiteDatabase sdb;
 
     public class MyArrayAdapter extends ArrayAdapter<String> {
-        private Context context;
-        protected ListView mListView;
+        private final Context context;
         private TextView tipoTextValue;
         private TextView tipoTextValueAvg;
         private TextView tipoTextValueDelta;
         private TextView tipoTextValueName;
 
-        public MyArrayAdapter(Context context, ListView listView, List<String> values) {
+        public MyArrayAdapter(Context context, List<String> values) {
             super(context, R.layout.simple_list_avg, values);
             this.tipoTextValueName = null;
             this.tipoTextValue = null;
             this.tipoTextValueAvg = null;
             this.tipoTextValueDelta = null;
             this.context = context;
-            this.mListView = listView;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_avg, parent, false);
+            @SuppressLint("ViewHolder") View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_avg, parent, false);
             tipoTextValueName = (TextView) view.findViewById(R.id.textViewValueName);
             tipoTextValue = (TextView) view.findViewById(R.id.textViewAvgValue);
             tipoTextValueAvg = (TextView) view.findViewById(R.id.textViewAvg);
@@ -165,7 +164,7 @@ public class TanksDetalAvg extends Fragment {
                     }
                 }
                 ListView listView = (ListView) view.findViewById(R.id.listViewAvgMain);
-                MyArrayAdapter arrayAdapter = new MyArrayAdapter(view.getContext(), listView, mListValueName);
+                MyArrayAdapter arrayAdapter = new MyArrayAdapter(view.getContext(), mListValueName);
                 listView.setAdapter(arrayAdapter);
             } else {
                 view = null;

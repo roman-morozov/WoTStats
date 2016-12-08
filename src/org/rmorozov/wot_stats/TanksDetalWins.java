@@ -128,6 +128,7 @@ public class TanksDetalWins extends Fragment implements OnChartGestureListener, 
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void setData(int GraphType, String player_id) {
         SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         StringBuilder append = new StringBuilder().append("select  MAX(");

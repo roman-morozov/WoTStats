@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,19 +21,14 @@ public class BarGraph extends View {
     private static final int ORIENTATION_HORIZONTAL = 0;
     private static final int ORIENTATION_VERTICAL = 1;
     private static final int VALUE_FONT_SIZE = 30;
-    private int mAxisColor;
+    private final int mAxisColor;
     private ArrayList<Bar> mBars;
-    private Rect mBoundsRect;
-    private OnBarClickedListener mListener;
-    private Paint mPaint;
-    private int mSelectedIndex;
-    private boolean mShowAxis;
-    private boolean mShowBarText;
-    private Rect mTextRect;
-
-    public interface OnBarClickedListener {
-        void onClick(int i);
-    }
+    private final Rect mBoundsRect;
+    private final Paint mPaint;
+    private final int mSelectedIndex;
+    private final boolean mShowAxis;
+    private final boolean mShowBarText;
+    private final Rect mTextRect;
 
     public BarGraph(Context context) {
         this(context, null);
@@ -93,14 +90,14 @@ public class BarGraph extends View {
             maxValue = 1.0f;
         }
         int count = 0;
-        SparseArray<Float> valueTextSizes = new SparseArray<>(mBars.size());
+        @SuppressLint("DrawAllocation") SparseArray<Float> valueTextSizes = new SparseArray<>(mBars.size());
         iterator = mBars.iterator();
         while (iterator.hasNext()) {
             Bar bar = (Bar) iterator.next();
             int left = (int) (2.0f * padding * count + padding + count * barWidth);
             int right = (int) (2.0f * padding * count + padding + (count + 1.0f) * barWidth);
             mBoundsRect.set(left, (int) ((getHeight() - bottomPadding) - ((bar.getValue() / maxValue) * usableHeight)), right, (int) (((float) getHeight()) - bottomPadding));
-            if (count != mSelectedIndex || mListener == null) {
+            if (count != mSelectedIndex) {
                 mPaint.setColor(bar.getColor());
             } else {
                 mPaint.setColor(bar.getSelectedColor());
@@ -158,7 +155,4 @@ public class BarGraph extends View {
         return true;
     }
 
-    public void setOnBarClickedListener(OnBarClickedListener listener) {
-        mListener = listener;
-    }
 }

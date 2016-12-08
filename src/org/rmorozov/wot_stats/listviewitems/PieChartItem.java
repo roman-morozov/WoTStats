@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats.listviewitems;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -13,7 +14,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import org.rmorozov.wot_stats.R;
 
 public class PieChartItem extends ChartItem {
-    private Typeface mTf;
+    private final Typeface mTf;
 
     private static class ViewHolder {
         PieChart chart;
@@ -31,6 +32,7 @@ public class PieChartItem extends ChartItem {
         return 2;
     }
 
+    @SuppressLint("InflateParams")
     public View getView(int position, View convertView, Context c) {
         ViewHolder holder;
         if (convertView == null) {

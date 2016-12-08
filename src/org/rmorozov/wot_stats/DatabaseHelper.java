@@ -77,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements BaseColumns {
     public static final String NAME_EU = "name_eu";
     public static final String NAME_RU = "name_ru";
 
+    @SuppressWarnings("SameParameterValue")
     private DatabaseHelper(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
     }

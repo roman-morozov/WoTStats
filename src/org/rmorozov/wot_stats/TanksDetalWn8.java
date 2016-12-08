@@ -1,10 +1,10 @@
 package org.rmorozov.wot_stats;
 
+import android.app.Fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -129,6 +129,7 @@ public class TanksDetalWn8 extends Fragment implements OnChartGestureListener, O
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void setData(int GraphType, String player_id) {
         SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         StringBuilder append = new StringBuilder().append("select  MAX(");

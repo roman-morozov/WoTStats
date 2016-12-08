@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
@@ -39,8 +40,7 @@ public class StatHistory extends Fragment {
     }
 
     public class MyArrayAdapter extends ArrayAdapter<String> {
-        private Context context;
-        protected ListView mListView;
+        private final Context context;
         private TextView tipoBattles1;
         private TextView tipoBattles2;
         private TextView tipoDmg1;
@@ -58,7 +58,7 @@ public class StatHistory extends Fragment {
         private TextView tipoWn81;
         private TextView tipoWn82;
 
-        public MyArrayAdapter(Context context, ListView listView, List<String> values) {
+        public MyArrayAdapter(Context context, List<String> values) {
             super(context, R.layout.simple_list_comp_item, values);
             tipoNomer = null;
             tipoBattles1 = null;
@@ -77,11 +77,10 @@ public class StatHistory extends Fragment {
             tipoExp2 = null;
             tipoLastBattle = null;
             this.context = context;
-            mListView = listView;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.stat_history_item, parent, false);
+            @SuppressLint("ViewHolder") View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.stat_history_item, parent, false);
             tipoNomer = (TextView) view.findViewById(R.id.it_nomer);
             tipoBattles1 = (TextView) view.findViewById(R.id.it_battles1);
             tipoBattles2 = (TextView) view.findViewById(R.id.it_battles2);
@@ -151,14 +150,6 @@ public class StatHistory extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dbHelper = DatabaseHelper.createDatabaseHelper(getActivity());
-    }
-
-    public void onStart() {
-        super.onStart();
-    }
-
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -238,7 +229,7 @@ public class StatHistory extends Fragment {
                 cursor.moveToNext();
             }
             cursor.close();
-            MyArrayAdapter myArrayAdapter = new MyArrayAdapter(getActivity(), listView, it_nomer);
+            MyArrayAdapter myArrayAdapter = new MyArrayAdapter(getActivity(), it_nomer);
             listView.setAdapter(myArrayAdapter);
             return viewHierarchy;
         }

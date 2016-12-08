@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats.custom;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.TextView;
 import com.github.mikephil.charting.components.MarkerView;
@@ -9,9 +10,11 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.Utils;
 import org.rmorozov.wot_stats.R;
 
+@SuppressLint("ViewConstructor")
 public class MyMarkerView extends MarkerView {
-    private TextView tvContent;
+    private final TextView tvContent;
 
+    @SuppressWarnings("SameParameterValue")
     public MyMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);
         this.tvContent = (TextView) findViewById(R.id.tvContent);

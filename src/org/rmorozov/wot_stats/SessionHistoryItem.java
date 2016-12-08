@@ -1,6 +1,6 @@
 package org.rmorozov.wot_stats;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -127,7 +127,7 @@ public class SessionHistoryItem extends Fragment {
 
     private View setValueToDetailView(double firstValue, double secondValue, double param1, double param2,
                                       String statName, LayoutInflater inflater, String spec) {
-        View viewDetail = inflater.inflate(R.layout.fragment_session_history_tank_detal_item, null);
+        @SuppressLint("InflateParams") View viewDetail = inflater.inflate(R.layout.fragment_session_history_tank_detal_item, null);
         TextView textViewStatName = (TextView) viewDetail.findViewById(R.id.textViewDetalStatName);
         textViewStatName.setText(statName);
         TextView textViewStatValue = (TextView) viewDetail.findViewById(R.id.textViewDetalStatValue);
@@ -464,7 +464,7 @@ public class SessionHistoryItem extends Fragment {
             statListAvg.add(String.format("%.2f", wn8Avg1));
         }
         ListView listView = (ListView) mViewHierarchy.findViewById(R.id.listViewSessionInfo);
-        listView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), listView, statListName));
+        listView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), statListName));
     }
 
     double getCalcWn8(TanksSession tank) {
@@ -508,16 +508,6 @@ public class SessionHistoryItem extends Fragment {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
     public void onPause() {
         super.onStop();
     }
@@ -552,14 +542,13 @@ public class SessionHistoryItem extends Fragment {
         return null;
     }
 
+    @SuppressWarnings("Convert2Lambda")
     public class MyArrayAdapter extends ArrayAdapter<String> {
-        private Context context;
-        protected ListView mListView;
+        private final Context context;
 
-        public MyArrayAdapter(Context context, ListView listView, List<String> values) {
+        public MyArrayAdapter(Context context, List<String> values) {
             super(context, R.layout.simple_list_avg, values);
             this.context = context;
-            mListView = listView;
         }
 
         @Override

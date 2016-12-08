@@ -1,17 +1,14 @@
 package org.rmorozov.wot_stats;
 
-import android.app.FragmentManager;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 
-/**
- * Created by 21990 on 07.10.2016.
- */
 public class SessionHistoryMainFragment extends FragmentStatePagerAdapter {
 
-    int numOfTabs;
-    CharSequence[] titles;
+    final int numOfTabs;
+    final CharSequence[] titles;
 
     public SessionHistoryMainFragment(FragmentManager fm, CharSequence[] mTitles, int mNumOfTabs) {
         super(fm);

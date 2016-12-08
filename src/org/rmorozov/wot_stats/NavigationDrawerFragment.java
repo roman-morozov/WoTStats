@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("Convert2Lambda")
 public class NavigationDrawerFragment extends Fragment {
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private ArrayList<String> listValueName;
@@ -27,22 +29,20 @@ public class NavigationDrawerFragment extends Fragment {
     private View mFragmentContainerView;
 
     public class MyArrayAdapter extends ArrayAdapter<String> {
-        private Context context;
+        private final Context context;
         private ImageView imageMenuItemName;
-        protected ListView mListView;
         private TextView tipoTextItemName;
 
-        public MyArrayAdapter(Context context, ListView listView, List<String> values) {
+        public MyArrayAdapter(Context context, List<String> values) {
             super(context, R.layout.simple_list_menu, values);
             this.tipoTextItemName = null;
             this.imageMenuItemName = null;
             this.context = context;
-            this.mListView = listView;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.simple_list_menu, parent, false);
+            @SuppressLint("ViewHolder") View view = inflater.inflate(R.layout.simple_list_menu, parent, false);
             tipoTextItemName = (TextView) view.findViewById(R.id.textViewMenu);
             imageMenuItemName = (ImageView) view.findViewById(R.id.imageViewMenu);
             tipoTextItemName.setText(listValueName.get(position));
@@ -107,7 +107,7 @@ public class NavigationDrawerFragment extends Fragment {
         listValueName.add(getString(R.string.title_section4));
         listValueName.add(getString(R.string.title_section5));
         listValueName.add(getString(R.string.title_section6));
-        mDrawerListView.setAdapter(new MyArrayAdapter(mDrawerListView.getContext(), mDrawerListView, listValueName));
+        mDrawerListView.setAdapter(new MyArrayAdapter(mDrawerListView.getContext(), listValueName));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
@@ -116,6 +116,7 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
 
+    @SuppressWarnings("SameParameterValue")
     public void setUp(int fragmentId, DrawerLayout drawerLayout) {
         mFragmentContainerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
@@ -184,10 +185,6 @@ public class NavigationDrawerFragment extends Fragment {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

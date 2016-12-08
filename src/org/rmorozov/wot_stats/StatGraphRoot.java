@@ -1,6 +1,5 @@
 package org.rmorozov.wot_stats;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class StatGraphRoot extends Fragment {
-    int mNumOfTabs;
+    final int mNumOfTabs;
     String[] mTitles;
     StatGraphMainFragment adapter;
     DatabaseHelper dbHelper;
@@ -62,11 +61,4 @@ public class StatGraphRoot extends Fragment {
         return null;
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    public void onDetach() {
-        super.onDetach();
-    }
 }

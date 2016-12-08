@@ -1,8 +1,6 @@
 package org.rmorozov.wot_stats;
 
-/**
- * Created by 21990 on 09.10.2016.
- */
+@SuppressWarnings("unused")
 public class TanksSession {
     private double battleAvgXp;
     private long battles;

@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.LimitLine;
-import com.github.mikephil.charting.components.LimitLine.LimitLabelPosition;
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -61,7 +59,7 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
             append = append.append(DatabaseHelper.TANK_ID_COLUMN).append(" = '").append(TanksDetailActivity.mTankId).append("' ").append(" GROUP BY ");
             try (Cursor cursor_tanks = sdb.rawQuery(append.append(DatabaseHelper.BATTLES_COLUMN).toString(), null)) {
                 if (cursor_tanks.getCount() > 1) {
-                    refresh_graph(v);
+                    refreshGraph(v);
                     cursor_tanks.close();
                     return v;
                 }
@@ -76,8 +74,7 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
         }
     }
 
-    public void refresh_graph(View viewHierarchy) {
-        Throwable th;
+    public void refreshGraph(View viewHierarchy) {
         SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         String str = DatabaseHelper.DATABASE_TABLE_MAIN_PLAYER;
         String[] strArr = new String[3];
@@ -88,6 +85,7 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
         Cursor mainPlayerCursor = sdb.query(str, strArr, stringBuilder.append(DatabaseHelper.ACTIVE).append("= ?").toString(), new String[]{"1"}, null, null, null);
         mainPlayerCursor.moveToFirst();
         String player_id = mainPlayerCursor.getString(1);
+        mainPlayerCursor.close();
         String selectItem;
         StringBuilder append = new StringBuilder().append("select  MAX(");
         append = append.append(DatabaseHelper.DAMAGE_COLUMN).append("), ");
@@ -118,15 +116,11 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
             append = append.append(DatabaseHelper.DATABASE_TABLE_TANK_STAT).append(" where ");
             append = append.append(DatabaseHelper.PLAYER_ID_COLUMN).append(" = '").append(player_id).append("' AND ");
             append = append.append(DatabaseHelper.TANK_ID_COLUMN).append(" = '").append(TanksDetailActivity.mTankId).append("'").append(" GROUP BY ");
-            Cursor cursorMax = sdb.rawQuery(append.append(DatabaseHelper.PLAYER_ID_COLUMN).toString(), null);
-            try {
+            try (Cursor cursorMax = sdb.rawQuery(append.append(DatabaseHelper.PLAYER_ID_COLUMN).toString(), null)) {
                 cursorMax.moveToFirst();
-                float minY = cursorMax.getFloat(cursorMax.getColumnIndex("minY"));
-                float maxY = cursorMax.getFloat(cursorMax.getColumnIndex("maxY"));
-                setData(45, 100.0f, 1, false, minY, maxY, player_id);
-            } finally {
-                cursorMax.close();
+                setData(1, player_id);
             }
+            cursor.close();
             sdb.close();
             mChart.getLegend().setEnabled(false);
             mChart.getAxisRight().setEnabled(false);
@@ -134,7 +128,8 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
         }
     }
 
-    private void setData(int count, float range, int GraphType, boolean Show_line_wn, float minYY, float maxYY, String player_id) {
+    @SuppressWarnings("SameParameterValue")
+    private void setData(int GraphType, String player_id) {
         SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         StringBuilder append = new StringBuilder().append("select  MAX(");
         append = append.append(DatabaseHelper.DAMAGE_COLUMN).append(") AS VALUE, ");
@@ -146,8 +141,8 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
         cursor.moveToFirst();
         List<String> xVals = new ArrayList<>();
         ArrayList<Entry> yVals = new ArrayList<>();
-        minYY = 1.0E8f;
-        maxYY = 0.0f;
+        float minYY = 1.0E8f;
+        float maxYY = 0.0f;
         for (int i = 0; i < cursor.getCount(); i++) {
             if (i >= 0) {
                 append = new StringBuilder();
@@ -193,15 +188,6 @@ public class TanksDetalDmg extends Fragment implements OnChartGestureListener, O
             leftAxis.resetAxisMinValue();
         }
         mChart.setData(data);
-    }
-
-    private LimitLine CreateLiminLine(LimitLine ll1, int color, float value) {
-        ll1 = new LimitLine(value);
-        ll1.setLineWidth(4.0f);
-        ll1.enableDashedLine(10.0f, 10.0f, 0.0f);
-        ll1.setLabelPosition(LimitLabelPosition.RIGHT_TOP);
-        ll1.setLineColor(color);
-        return ll1;
     }
 
     public void onChartGestureStart(MotionEvent me, ChartGesture lastPerformedGesture) {

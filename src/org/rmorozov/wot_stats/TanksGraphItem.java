@@ -1,6 +1,6 @@
 package org.rmorozov.wot_stats;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -8,19 +8,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Spinner;
-import android.widget.Toast;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.LimitLine.LimitLabelPosition;
@@ -42,6 +37,7 @@ import org.rmorozov.wot_stats.custom.MyValueFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("Convert2Lambda")
 public class TanksGraphItem extends Fragment implements OnChartGestureListener, OnChartValueSelectedListener {
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_SESSION_COUNTER = "session_count";
@@ -405,14 +401,6 @@ public class TanksGraphItem extends Fragment implements OnChartGestureListener, 
                 leftAxis.setAxisMinValue(minYY - 0.5F);
             }
         }
-    }
-
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    public void onDetach() {
-        super.onDetach();
     }
 
     public void onChartGestureStart(MotionEvent me, ChartGesture lastPerformedGesture) {

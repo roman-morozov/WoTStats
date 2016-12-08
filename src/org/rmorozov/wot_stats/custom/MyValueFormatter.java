@@ -2,10 +2,11 @@ package org.rmorozov.wot_stats.custom;
 
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.formatter.YAxisValueFormatter;
+
 import java.text.DecimalFormat;
 
 public class MyValueFormatter implements YAxisValueFormatter {
-    private DecimalFormat mFormat;
+    private final DecimalFormat mFormat;
 
     public MyValueFormatter() {
         mFormat = new DecimalFormat("###,###,###,##0.0");

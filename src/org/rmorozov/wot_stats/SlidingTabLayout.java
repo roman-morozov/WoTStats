@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -18,14 +17,11 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private static final int TAB_VIEW_PADDING_DIPS = 16;
     private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
     private static final int TITLE_OFFSET_DIPS = 24;
-    private SparseArray<String> mContentDescriptions;
+    private final SparseArray<String> mContentDescriptions;
     private boolean mDistributeEvenly;
     private final SlidingTabStrip mTabStrip;
-    private int mTabViewLayoutId;
-    private int mTabViewTextViewId;
-    private int mTitleOffset;
+    private final int mTitleOffset;
     private ViewPager mViewPager;
-    private OnPageChangeListener mViewPagerPageChangeListener;
 
     private class TabClickListener implements OnClickListener {
         private TabClickListener() {
@@ -57,17 +53,11 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 mTabStrip.onViewPagerPageChanged(position, positionOffset);
                 View selectedTitle = mTabStrip.getChildAt(position);
                 scrollToTab(position, selectedTitle != null ? (int) (((float) selectedTitle.getWidth()) * positionOffset) : 0);
-                if (mViewPagerPageChangeListener != null) {
-                    mViewPagerPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
-                }
             }
         }
 
         public void onPageScrollStateChanged(int state) {
             mScrollState = state;
-            if (mViewPagerPageChangeListener != null) {
-                mViewPagerPageChangeListener.onPageScrollStateChanged(state);
-            }
         }
 
         public void onPageSelected(int position) {
@@ -80,9 +70,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 View childAt = mTabStrip.getChildAt(i);
                 z = position == i;
                 childAt.setSelected(z);
-            }
-            if (mViewPagerPageChangeListener != null) {
-                mViewPagerPageChangeListener.onPageSelected(position);
             }
         }
     }
@@ -105,25 +92,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
         addView(mTabStrip, -1, -2);
     }
 
-    public void setCustomTabColorizer(TabColorizer tabColorizer) {
-        mTabStrip.setCustomTabColorizer(tabColorizer);
-    }
-
     public void setDistributeEvenly(boolean distributeEvenly) {
         mDistributeEvenly = distributeEvenly;
-    }
-
-    public void setSelectedIndicatorColors(int... colors) {
-        mTabStrip.setSelectedIndicatorColors(colors);
-    }
-
-    public void setOnPageChangeListener(OnPageChangeListener listener) {
-        mViewPagerPageChangeListener = listener;
-    }
-
-    public void setCustomTabView(int layoutResId, int textViewId) {
-        mTabViewLayoutId = layoutResId;
-        mTabViewTextViewId = textViewId;
     }
 
     public void setViewPager(ViewPager viewPager) {
@@ -152,16 +122,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private void populateTabStrip() {
         PagerAdapter adapter = mViewPager.getAdapter();
         for (int i = 0; i < adapter.getCount(); i++) {
-            View tabView = null;
+            View tabView;
             TextView tabTitleView = null;
-            if (mTabViewLayoutId != 0) {
-                tabView = LayoutInflater.from(getContext()).inflate(mTabViewLayoutId, mTabStrip, false);
-                tabTitleView = (TextView) tabView.findViewById(mTabViewTextViewId);
-            }
-            if (tabView == null) {
-                tabView = createDefaultTabView(getContext());
-            }
-            if (tabTitleView == null && TextView.class.isInstance(tabView)) {
+            tabView = createDefaultTabView(getContext());
+            if (TextView.class.isInstance(tabView)) {
                 tabTitleView = (TextView) tabView;
             }
             if (mDistributeEvenly) {
@@ -182,10 +146,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
                 tabView.setSelected(true);
             }
         }
-    }
-
-    public void setContentDescription(int i, String desc) {
-        mContentDescriptions.put(i, desc);
     }
 
     protected void onAttachedToWindow() {

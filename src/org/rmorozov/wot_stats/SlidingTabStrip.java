@@ -17,7 +17,6 @@ class SlidingTabStrip extends LinearLayout {
     private static final int SELECTED_INDICATOR_THICKNESS_DIPS = 3;
     private final Paint mBottomBorderPaint;
     private final int mBottomBorderThickness;
-    private TabColorizer mCustomTabColorizer;
     private final int mDefaultBottomBorderColor;
     private final SimpleTabColorizer mDefaultTabColorizer;
     private final Paint mSelectedIndicatorPaint;
@@ -35,6 +34,7 @@ class SlidingTabStrip extends LinearLayout {
             return mIndicatorColors[position % mIndicatorColors.length];
         }
 
+        @SuppressWarnings("SameParameterValue")
         void setIndicatorColors(int... colors) {
             mIndicatorColors = colors;
         }
@@ -44,6 +44,7 @@ class SlidingTabStrip extends LinearLayout {
         this(context, null);
     }
 
+    @SuppressWarnings("SameParameterValue")
     SlidingTabStrip(Context context, AttributeSet attrs) {
         super(context, attrs);
         setWillNotDraw(false);
@@ -60,17 +61,6 @@ class SlidingTabStrip extends LinearLayout {
         mSelectedIndicatorPaint = new Paint();
     }
 
-    void setCustomTabColorizer(TabColorizer customTabColorizer) {
-        mCustomTabColorizer = customTabColorizer;
-        invalidate();
-    }
-
-    void setSelectedIndicatorColors(int... colors) {
-        mCustomTabColorizer = null;
-        mDefaultTabColorizer.setIndicatorColors(colors);
-        invalidate();
-    }
-
     void onViewPagerPageChanged(int position, float positionOffset) {
         mSelectedPosition = position;
         mSelectionOffset = positionOffset;
@@ -80,7 +70,7 @@ class SlidingTabStrip extends LinearLayout {
     protected void onDraw(Canvas canvas) {
         int height = getHeight();
         int childCount = getChildCount();
-        TabColorizer tabColorizer = mCustomTabColorizer != null ? mCustomTabColorizer : mDefaultTabColorizer;
+        TabColorizer tabColorizer = mDefaultTabColorizer;
         if (childCount > 0) {
             View selectedTitle = getChildAt(mSelectedPosition);
             int left = selectedTitle.getLeft();
@@ -101,6 +91,7 @@ class SlidingTabStrip extends LinearLayout {
         canvas.drawRect(0.0f, height - mBottomBorderThickness, getWidth(), height, mBottomBorderPaint);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static int setColorAlpha(int color, byte alpha) {
         return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color));
     }

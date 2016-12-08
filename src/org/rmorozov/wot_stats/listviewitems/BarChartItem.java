@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats.listviewitems;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -14,7 +15,7 @@ import com.github.mikephil.charting.data.ChartData;
 import org.rmorozov.wot_stats.R;
 
 public class BarChartItem extends ChartItem {
-    private Typeface mTf;
+    private final Typeface mTf;
 
     private static class ViewHolder {
         BarChart chart;
@@ -32,6 +33,7 @@ public class BarChartItem extends ChartItem {
         return 0;
     }
 
+    @SuppressLint("InflateParams")
     public View getView(int position, View convertView, Context c) {
         ViewHolder holder;
         if (convertView == null) {

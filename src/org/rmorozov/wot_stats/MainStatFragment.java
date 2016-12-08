@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -30,9 +31,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
+@SuppressWarnings("Convert2Lambda")
 public class MainStatFragment extends Fragment {
     public static final String APP_PREFERENCES_SORT = "sort_field";
-    public static String mainPlayer = null;
     private static final String STATDELTA = "textDelta";
     private static final String STATNAME = "textStatName";
     private static final String STATVALUE = "textStatValue";
@@ -53,26 +54,26 @@ public class MainStatFragment extends Fragment {
     private SQLiteDatabase sdb;
     private ArrayList<HashMap<String, Object>> statList;
 
+    @SuppressWarnings("Convert2Lambda")
     public class MyExpandableAdapter extends BaseExpandableListAdapter {
         private ArrayList<String> child;
-        private ArrayList<Object> childItems;
-        private Context mContext;
-        private ArrayList<String> parentItems;
+        private final ArrayList<Object> childItems;
+        private final Context mContext;
+        private final ArrayList<String> parentItems;
 
         class ViewHolder {
-            ImageView imageViewClass;
-            ImageView imageViewMark;
-            ImageView imageViewNation;
-            ImageView imageViewTanksDetal;
-            LinearLayout linearLayoutGroup;
-            int position;
-            TextView textLevel;
-            TextView textStatValueGroup;
-            TextView textTankName;
-            TextView textViewDeltaB;
-            TextView textViewDeltaW;
-            TextView textViewTanksId;
-            TextView textWins;
+            final ImageView imageViewClass;
+            final ImageView imageViewMark;
+            final ImageView imageViewNation;
+            final ImageView imageViewTanksDetal;
+            final LinearLayout linearLayoutGroup;
+            final TextView textLevel;
+            final TextView textStatValueGroup;
+            final TextView textTankName;
+            final TextView textViewDeltaB;
+            final TextView textViewDeltaW;
+            final TextView textViewTanksId;
+            final TextView textWins;
 
             ViewHolder(View convertView) {
                 this.linearLayoutGroup = (LinearLayout) convertView.findViewById(R.id.layoutMainGroup);
@@ -96,6 +97,7 @@ public class MainStatFragment extends Fragment {
             this.mContext = context;
         }
 
+        @SuppressLint("InflateParams")
         @SuppressWarnings("unchecked")
         public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
             child = (ArrayList<String>) childItems.get(groupPosition);
@@ -126,6 +128,7 @@ public class MainStatFragment extends Fragment {
             return convertView;
         }
 
+        @SuppressLint("InflateParams")
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
             ViewHolder holder;
             if (convertView == null) {
@@ -275,14 +278,6 @@ public class MainStatFragment extends Fragment {
             return parentItems.size();
         }
 
-        public void onGroupCollapsed(int groupPosition) {
-            super.onGroupCollapsed(groupPosition);
-        }
-
-        public void onGroupExpanded(int groupPosition) {
-            super.onGroupExpanded(groupPosition);
-        }
-
         public long getGroupId(int groupPosition) {
             return 0;
         }
@@ -297,27 +292,25 @@ public class MainStatFragment extends Fragment {
     }
 
     private class PrefetchDataCurrency extends AsyncTask<Void, Void, Void> {
-        private String dataname;
+        private final String dataname;
         private ProgressDialog progressDialog;
 
         public class MyArrayAdapter extends ArrayAdapter<String> {
-            private Context context;
+            private final Context context;
             private TextView deltaEditText;
-            protected ListView mListView;
             private TextView nameEditText;
             private TextView valueEditText;
 
-            public MyArrayAdapter(Context context, ListView listView, List<String> values) {
+            public MyArrayAdapter(Context context, List<String> values) {
                 super(context, R.layout.simple_list_stat_item, values);
                 valueEditText = null;
                 nameEditText = null;
                 deltaEditText = null;
                 this.context = context;
-                mListView = listView;
             }
 
             public View getView(int position, View convertView, ViewGroup parent) {
-                View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_stat_item, parent, false);
+                @SuppressLint("ViewHolder") View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_stat_item, parent, false);
                 valueEditText = (TextView) view.findViewById(R.id.textStatValue);
                 nameEditText = (TextView) view.findViewById(R.id.textStatName);
                 deltaEditText = (TextView) view.findViewById(R.id.textStatDelta);
@@ -725,7 +718,7 @@ public class MainStatFragment extends Fragment {
                     statListForView.add("lastbattles");
                     hm.put(MainStatFragment.STATDELTA, "NO_DATA");
                     statList.add(hm);
-                    statListView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), statListView, statListForView));
+                    statListView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), statListForView));
                 }
             }
             if (statName != null && tankArray != null) {
@@ -1039,7 +1032,7 @@ public class MainStatFragment extends Fragment {
                     ((TextView) mViewHierarchy.findViewById(R.id.textViewMainPlayer)).setText(playerName);
                     ((TextView) mViewHierarchy.findViewById(R.id.textViewMainBattless)).setText(mViewHierarchy.getResources().getString(R.string.ttl_main_stat_name1) + ": " + String.format("%d", dblBattles.intValue()));
                     ((TextView) mViewHierarchy.findViewById(R.id.textViewMainWins)).setText(mViewHierarchy.getResources().getString(R.string.ttl_main_stat_name2) + ": " + String.format("%.2f", dblWinrate) + "%");
-                    statListView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), statListView, statListForView));
+                    statListView.setAdapter(new MyArrayAdapter(mViewHierarchy.getContext(), statListForView));
                     tankArray = null;
                 }
             }
@@ -1258,10 +1251,6 @@ public class MainStatFragment extends Fragment {
         }
     }
 
-    public void onStart() {
-        super.onStart();
-    }
-
     public void onActivityCreated(Bundle savedInstanceState) {
         sdb = dbHelper.getReadableDatabase();
         StringBuilder append = new StringBuilder().append("SELECT * FROM ");
@@ -1282,7 +1271,6 @@ public class MainStatFragment extends Fragment {
             cursor.moveToFirst();
             View viewHierarchy = inflater.inflate(R.layout.fragment_stat_main, container, false);
             mViewHierarchy = viewHierarchy;
-            mainPlayer = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PLAYER_ID_COLUMN));
             TabHost tabs = (TabHost) viewHierarchy;
             tabs.setup();
             TabSpec spec = tabs.newTabSpec("tagMain");

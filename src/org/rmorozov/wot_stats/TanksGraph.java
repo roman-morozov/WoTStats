@@ -1,6 +1,5 @@
 package org.rmorozov.wot_stats;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,6 +26,7 @@ public class TanksGraph extends Fragment {
     SharedPreferences mSettings;
     public View mViewHierarchy;
 
+    @SuppressWarnings("SameParameterValue")
     public static TanksGraph newInstance(String param1, String param2) {
         TanksGraph fragment = new TanksGraph();
         Bundle args = new Bundle();
@@ -48,10 +48,6 @@ public class TanksGraph extends Fragment {
         Editor editor = mSettings.edit();
         editor.putString(APP_PREFERENCES_COUNTER, choose[spinner.getSelectedItemPosition()]);
         editor.apply();
-    }
-
-    public void onResume() {
-        super.onResume();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -223,11 +219,4 @@ public class TanksGraph extends Fragment {
         Toast.makeText(getActivity(), getString(R.string.no_select), Toast.LENGTH_SHORT).show();
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    public void onDetach() {
-        super.onDetach();
-    }
 }

@@ -1,14 +1,14 @@
 package org.rmorozov.wot_stats;
 
-import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 
 public class StatGraphMainFragment extends FragmentStatePagerAdapter {
     private static final String ARG_SECTION_NUMBER = "section_number";
-    int mNumOfTabs;
-    CharSequence[] mTitles;
+    final int mNumOfTabs;
+    final CharSequence[] mTitles;
 
     public StatGraphMainFragment(FragmentManager fm, CharSequence[] mTitles, int mNumbOfTabsNumb) {
         super(fm);

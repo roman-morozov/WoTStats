@@ -1,11 +1,11 @@
 package org.rmorozov.wot_stats;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -13,15 +13,15 @@ import android.view.MenuItem;
 
 public class TanksDetailActivity extends Activity {
     public static String mTankId;
-    int mNumOfTabs;
+    final int mNumOfTabs;
     String[] mTitles;
     ViewPagerAdapter adapter;
     ViewPager mPager;
     SlidingTabLayout mTabs;
 
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-        int mNumOfTabs;
-        CharSequence[] mTitles;
+        final int mNumOfTabs;
+        final CharSequence[] mTitles;
 
         public ViewPagerAdapter(FragmentManager fm, CharSequence[] mTitles, int mNumOfTabs) {
             super(fm);
@@ -85,7 +85,9 @@ public class TanksDetailActivity extends Activity {
             }
             mTabs.setViewPager(mPager);
         } finally {
-            cursor.close();
+            if (cursor != null) {
+                cursor.close();
+            }
         }
     }
 

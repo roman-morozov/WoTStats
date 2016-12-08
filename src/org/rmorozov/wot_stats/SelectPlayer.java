@@ -1,5 +1,6 @@
 package org.rmorozov.wot_stats;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.ProgressDialog;
@@ -14,21 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@SuppressWarnings("Convert2Lambda")
 public class SelectPlayer extends Activity {
     public static final String Player = "org.morozov.wot_stats";
     private static final String URL_LIST_PLAYER = "/wot/account/list/?search=";
@@ -44,11 +40,12 @@ public class SelectPlayer extends Activity {
     private boolean mListType;
     private SQLiteDatabase sdb;
 
+    @SuppressWarnings("Convert2Lambda")
     public class MyArrayAdapter extends ArrayAdapter<String> {
-        private Context context;
+        private final Context context;
         private ImageView deleteButton;
         private ImageView deleteButtonTank;
-        protected ListView mListView;
+        protected final ListView mListView;
         private TextView tipoEditText;
         private TextView tipoEditTextServer;
 
@@ -63,7 +60,7 @@ public class SelectPlayer extends Activity {
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_select_item, parent, false);
+            @SuppressLint("ViewHolder") View view = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.simple_list_select_item, parent, false);
             tipoEditText = (TextView) view.findViewById(R.id.textSelPlayerName);
             tipoEditTextServer = (TextView) view.findViewById(R.id.textPlayerServer);
             deleteButton = (ImageView) view.findViewById(R.id.imageViewSelDelete);
@@ -259,7 +256,7 @@ public class SelectPlayer extends Activity {
         });
     }
 
-    public void buttonSearchPlayerClick(View v) {
+    public void buttonSearchPlayerClick() {
         EditText playerName = (EditText) findViewById(R.id.editPlayerName);
         Spinner textServer = (Spinner) findViewById(R.id.spinnerServers);
         String[] choose = getResources().getStringArray(R.array.servers);

@@ -1,6 +1,5 @@
 package org.rmorozov.wot_stats;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -63,11 +62,4 @@ public class SessionHistoryRoot extends Fragment {
         return null;
     }
 
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    public void onDetach() {
-        super.onDetach();
-    }
 }
