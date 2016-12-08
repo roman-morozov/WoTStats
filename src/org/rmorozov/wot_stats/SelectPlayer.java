@@ -49,19 +49,15 @@ public class SelectPlayer extends Activity {
         private ImageView deleteButton;
         private ImageView deleteButtonTank;
         protected ListView mListView;
-        private String[] mValues;
-        private MyArrayAdapter playerArrayAdapter;
         private TextView tipoEditText;
         private TextView tipoEditTextServer;
 
         public MyArrayAdapter(Context context, ListView listView, List<String> values) {
             super(context, R.layout.simple_list_select_item, values);
-            playerArrayAdapter = null;
             tipoEditText = null;
             tipoEditTextServer = null;
             deleteButton = null;
             deleteButtonTank = null;
-            playerArrayAdapter = this;
             this.context = context;
             mListView = listView;
         }
@@ -120,7 +116,7 @@ public class SelectPlayer extends Activity {
                                     }
                                 }
                                 cursor.close();
-                                playerArrayAdapter.remove(playerArrayAdapter.getItem(position));
+                                remove(getItem(position));
                                 dialog.dismiss();
                             }
                         });
