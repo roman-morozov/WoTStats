@@ -1,7 +1,6 @@
 package org.rmorozov.wot_stats;
 
 import android.util.Log;
-import com.parse.codec.binary.Hex;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -72,7 +71,7 @@ public class JSONParser {
             connection.setRequestMethod("GET");
             connection.setDoInput(true);
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), Hex.DEFAULT_CHARSET_NAME), 8);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()), 8);
                 while (true) {
                     String line = reader.readLine();
                     if (line != null) {
